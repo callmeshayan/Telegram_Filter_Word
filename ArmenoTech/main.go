@@ -32,9 +32,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	psqlInfo := fmt.Sprintf("host=localhost port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		port, user, password, dbname)
+	psqlInfo := fmt.Sprintf("postgresql://postgres:%s@192.168.1.16/Telegram_Fliter_bot?sslmode=disable", password)
 
 	bot.Debug = true
 
