@@ -46,10 +46,13 @@ This bot filters messages containing a specified word and logs them into a Postg
 - **Stopping the Bot**: Use the `/stop` command to stop the bot.
 - **Logging**: Filtered messages are logged into the `filtered_messages` table while non-filtered messages are logged into the `non_filtered_messages` table in the PostgreSQL database.
 
-## Decisions Made
+## Implementation Details
 
-- **Database Choice**: PostgreSQL was chosen for its reliability, features, and compatibility with Go.
-- **Message Handling**: Messages are handled using long polling to receive updates from Telegram.
-- **Case Insensitive Filtering**: Message filtering is case-insensitive to capture variations in casing.
-- **Error Handling**: Errors are logged and appropriate error messages are sent to users.
-
+- **Logging Messages**: Messages filtered by the bot are inserted into the `filtered_messages` table, and non-filtered messages are inserted into the `non_filtered_messages` table in the PostgreSQL database.
+- **Database Schema**:
+  - `filtered_messages` table: 
+    - Columns: `message_id` (INT), `chat_id` (INT), `user_id` (INT), `message_text` (TEXT), `timestamp` (TIMESTAMP)
+  - `non_filtered_messages` table:
+    - Columns: `message_id` (INT), `chat_id` (INT), `user_id` (INT), `message_text` (TEXT), `timestamp` (TIMESTAMP)
+- **Database Connection**: The bot establishes a connection to the PostgreSQL database using the provided database URL and password. 
+- **Error Handling**: Errors related to database operations are logged, and appropriate error messages are sent to users.
