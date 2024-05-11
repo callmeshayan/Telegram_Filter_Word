@@ -51,7 +51,7 @@ This bot filters messages containing a specified word and logs them into a Postg
 - **Logging Messages**: Messages filtered by the bot are inserted into the `filtered_messages` table, and non-filtered messages are inserted into the `non_filtered_messages` table in the PostgreSQL database.
 - **Database Schema**:
   - `filtered_messages` table: 
-    - Columns: `message_id` (INT), `chat_id` (INT), `user_id` (INT), `message_text` (TEXT), `timestamp` (TIMESTAMP)
+    - Columns: `message_id` (INT), `chat_id` (INT), `user_id` (INT), `message_text` (TEXT), `word` (TEXT),`timestamp` (TIMESTAMP)
   - `non_filtered_messages` table:
     - Columns: `message_id` (INT), `chat_id` (INT), `user_id` (INT), `message_text` (TEXT), `timestamp` (TIMESTAMP)
 - **Database Connection**: The bot establishes a connection to the PostgreSQL database using the provided database URL and password. 
