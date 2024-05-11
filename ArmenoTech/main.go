@@ -12,13 +12,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	host   = "localhost"
-	port   = 5432
-	user   = "postgres"
-	dbname = "Telegram_Fliter_bot"
-)
-
 var filteredWord string
 
 func main() {
@@ -32,7 +25,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	psqlInfo := fmt.Sprintf("postgresql://postgres:%s@192.168.1.16/Telegram_Fliter_bot?sslmode=disable", password)
+	psqlInfo := fmt.Sprintf("postgres://avnadmin:%s@pg-7a5c95-nshayan81-16c9.h.aivencloud.com:13016/defaultdb?sslmode=require", password)
 
 	bot.Debug = true
 
